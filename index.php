@@ -4,6 +4,7 @@
   require_once("include/functions_db.php");
   require_once("include/functions_db_plus.php");
   define("DBNAME", "db/blog.db");
+
   // Datenbankverbindung herstellen, diesen Teil nicht ändern!
   if (!file_exists(DBNAME)) exit("Die Datenbank 'blog.db' konnte nicht gefunden werden!");
   $db = new SQLite3(DBNAME);
@@ -14,6 +15,7 @@
   // Prüfung, ob bereits ein Blog ausgewählt worden ist
   if (isset($_GET['bid'])) $blogId = $_GET['bid'];
   else $blogId = 0;
+  $blogName = getUserName($blogId);
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -38,7 +40,7 @@
   <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
       <div class="navbar-header">
-		<a class="navbar-brand"><?php echo "Blog (Namen einsetzen...)"; ?></a>
+		<a class="navbar-brand"><?php echo "Blog ".$blogName.""; ?></a>
       </div>
       <ul class="nav navbar-nav">
 		<?php
