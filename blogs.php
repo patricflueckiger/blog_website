@@ -2,11 +2,16 @@
   // Alle Blogs bzw. Benutzernamen holen und falls Blog bereits ausgewählt, entsprechenden Namen markieren
   // Hier Code....
  $blogid = 0;
-
+ $styleid = $_GET['bid'];
 	$blogs = getUserNames();
 	foreach ($blogs as $blog) {
 		$blogid++;
+		if($blog['uid'] == $styleid){
+			echo "<div ><a href='index.php?function=blogs&bid=".$blog['uid']."' title='uid' ><h4 style='background-color:grey;'>".$blog['name']."</h4></a></div>";
+		}
+		else{
 			echo "<div><a href='index.php?function=blogs&bid=".$blog['uid']."' title='uid'><h4>".$blog['name']."</h4></a></div>";
+		}
 	}
   // Schlaufe über alle Blogs bzw. Benutzer
   // Hier Code....
