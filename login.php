@@ -1,13 +1,26 @@
 <?php
-  $meldung = "";
-  $email = "";
-  $passwort = "";
+$email = "";
+$passwort = "";
+$meldung = "";
+
+  if(isset($_POST['email'])&&isset($_POST)){
+    $email =$_POST['email'];
+    $passwort = $_POST['passwort'];
+    $uid = getUserIdFromDb($email, $passwort);
+    $_SESSION['uid'] = $uid;
+  }
+
+  
+
+
+
+
   // $_SERVER['PHP_SELF'] = login.php in diesem Fall (also die PHP-Datei, die gerade ausgeführt wird).
   // Mit andern Worten: Nach Senden des Formulars wird wieder login.php aufgerufen.
   // Die Funktionen zur Überprüfung, ob die Login-Daten gültig sind, muss also hier oben im PHP-Teil stehen!
   // Wenn Login-Daten korrekt sind:
   // Session-Variable mit Benutzer-ID setzen und Wechsel in Memberbereich
-  // $_SESSION['uid'] = $uid;	
+  // $_SESSION['uid'] = $uid;
   // header('Location: index.php?function=entries_member');
   // Wenn Formular gesendet worden ist, die Login-Daten aber nicht korrekt sind:
   // Unten auf der Seite Anzeige der Fehlermeldung.
