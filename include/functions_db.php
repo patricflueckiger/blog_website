@@ -37,7 +37,7 @@
    getUserNames: Liefert die Namen aller registrierter Benutzer zurück
    Hinweis:		 Jeder Benutzer hat einen Blog, der auf seinen Namen lautet. Mit der Liste können
 				 demzufolge alle Blogs angezeigt werden. Die Funktion könnte auch getBlogs() heissen.
-   Rückgabe:	 2-dimensionales Array, 
+   Rückgabe:	 2-dimensionales Array,
 				 - 1. Dimension = Benutzer
 				 - 2. Dimension = Attribute des Benutzers
    Sortierung:	 1. nach Name und 2. nach Mailadresse
@@ -58,7 +58,7 @@
 			   Fall sind nur Entry-ID, Datum und Titel relevant.
 			   Möglichkeit 2. Es werden gleich alle Blog-Beiträge untereinander angezeigt.
    $uid:	   User-ID des gewünschten Benutzers
-   Rückgabe:   2-dimensionales Array, 
+   Rückgabe:   2-dimensionales Array,
 			   - 1. Dimension = Blog-Beitrag
 			   - 2. Dimension = Attribute des Beitrags
 					* Entry-ID
@@ -72,7 +72,7 @@
   function getEntries($uid) {
 	$alle = [];
 	$db = getValue('cfg_db');
-	$entries = $db->query("SELECT eid, datetime, title, content, picture1, picture2, picture3 FROM entry WHERE uid=$uid ORDER BY eid DESC");
+	$entries = $db->query("SELECT eid, datetime, title, content, picture1, picture2, picture3 FROM entry WHERE uid=$uid ORDER BY datetime DESC");
 	while ($entry = $entries->fetchArray()) {
 	  $alle[] = $entry;
 	}

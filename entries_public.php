@@ -2,35 +2,26 @@
 
 
 
+
+<
 <?php
 $entries = getEntries($blogId);
 foreach ($entries as $entry ) {
-echo "<br/>"; echo "<br/>";
+$eid = $entry['eid'];
+$title = $entry['title'];
+echo "<br/>";
+echo "<br/>";
 echo $entry['title'];
+echo "<li><a href='index.php?function=entries_public&bid=$blogId&eid=$eid'>$title</a></li>";
 echo "<br/>";
 echo date('d.m.Y H:i',$entry['datetime']);
-echo "<br/>";
 
 }
-?>
 
-
-<?php
-$entries = getEntries($blogId);
-foreach ($entries as $entry ) {
-echo "<br/>"; echo "<br/>";
-echo $entry['title'];
-echo "<br/>";
-echo date('d.m.Y H:i',$entry['datetime']);
-echo "<br/>";
-$content = nl2br($blog['content']);
+if(isset($_GET['eid'])){
+ $eid= $_GET['eid'];
+$entry = getEntry($eid);
 echo $entry['content'];
 }
 ?>
 </div>
-
-
-  // Alle Blogeinträge holen, die Blog-ID ist in der Variablen $blogId gespeichert (wird in index.php gesetzt)
-  // Hier Code... (Schlaufe über alle Einträge dieses Blogs)
-
-  // Nachfolgend das Beispiel einer Ausgabe in HTML, dieser Teil muss mit einer Schlaufe über alle Blog-Beiträge und der Ausgabe mit PHP ersetzt werden
