@@ -7,10 +7,10 @@
 	foreach ($blogs as $blog) {
 		$blogid++;
 		if($blog['uid'] == $styleid){
-			echo "<div ><a href='index.php?function=blogs&bid=".$blog['uid']."' title='uid' ><h4 style='background-color:grey;'>".$blog['name']."</h4></a></div>";
+			echo "<div ><a href='index.php?function=entries_public&bid=".$blog['uid']."' title='uid' ><h4 style='color: green;'>".$blog['name']."</h4></a></div>";
 		}
 		else{
-			echo "<div><a href='index.php?function=blogs&bid=".$blog['uid']."' title='uid'><h4>".$blog['name']."</h4></a></div>";
+			echo "<div><a href='index.php?function=entries_public&bid=".$blog['uid']."' title='uid'><h4>".$blog['name']."</h4></a></div>";
 		}
 	}
   // Schlaufe über alle Blogs bzw. Benutzer
