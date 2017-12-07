@@ -13,18 +13,25 @@
   if (isset($_GET['function'])) $function = $_GET['function'];
   else $function = "login";
   // Prüfung, ob bereits ein Blog ausgewählt worden ist
-  if (isset($_GET['bid'])){
+  if(isset($_SESSION['uid'])) {
+    if(isset($_GET['bid'])){
+      $blogId = $_GET['bid'];
+    }
+    else{
+      $blogId = 0;
+    }
+    $blogName = getUserName($_SESSION['uid']);
+  }
+  elseif (isset($_GET['bid'])){
     $blogId = $_GET['bid'];
     $blogName = getUserName($_GET['bid']);
   }
-  elseif(isset($_SESSION['uid'])) {
-  $blogId = 0;
-    $blogName = getUserName($_SESSION['uid']);
-  }
+
   else{
     $blogId = 0;
     $blogName = "";
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -58,8 +65,8 @@
       echo "<li><a href='index.php?function=logout&bid=$blogId'>Logout</a></li>";
       echo "<li><a href='index.php?function=blogs&bid=$blogId'>Blog wählen</a></li>";
       echo "<li><a href='index.php?function=entries_public&bid=$blogId'>Beiträge anzeigen</a></li>";
-      echo "<li><a href='index.php?function=blogs&bid=$blogId'>Beitrag hinzufügen</a></li>";
-      echo "<li><a href='index.php?function=blogs&bid=$blogId'>Beitrag ändern</a></li>";
+      echo "<li><a href='index.php?function=blog_new&bid=$blogId'>Beitrag hinzufügen</a></li>";
+      echo "<li><a href='index.php?function=meine_blogs&bid=$blogId'>Meine Beiträge</a></li>";
     }
     else {
       echo "<li><a href='index.php?function=login&bid=$blogId'>Login</a></li>";

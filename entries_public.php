@@ -16,7 +16,7 @@ echo "<br/>";
 echo date('d.m.Y H:i',$entry['datetime']);
 
 }
-echo "<div class='form-group' style='margin-top: 20px;'>";
+echo "<div class='form-group' style='margin-top: 20px'>";
 if(isset($_GET['eid'])){
  $eid= $_GET['eid'];
 $entry = getEntry($eid);
