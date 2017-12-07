@@ -3,14 +3,24 @@ $email = "";
 $passwort = "";
 $meldung = "";
 
-  if(isset($_POST['email'])&&isset($_POST)){
+  if(isset($_POST['email'])&&isset($_POST['passwort'])){
     $email =$_POST['email'];
     $passwort = $_POST['passwort'];
-    $uid = getUserIdFromDb($email, $passwort);
-    $_SESSION['uid'] = $uid;
-  }
+    //$uid = getUserIdFromDb($email, $passwort);
+    //$_SESSION['uid'] = $uid;
 
-  
+
+    }
+    if (getUserIdFromDb($email, $passwort) != 0) {
+      $_SESSION['uid'] = getUserIdFromDb($email, $passwort);
+      $LoginID = getUserIdFromSession();
+      header("Location: index.php?function=entries_public&bid=$LoginID");
+    } else {
+      echo "lol fautsch iglogt G!";
+    }
+
+
+
 
 
 
