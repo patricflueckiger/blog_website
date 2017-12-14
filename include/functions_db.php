@@ -125,7 +125,7 @@
    Rückgabe:	- True bei Erfolg
 				- False bei Fehler
    ************************************************************************************************/
-  function updateEntry($eid, $title, $content) {
+  function updateEntry($eid, $title, $content,$datum) {
 	$db = getValue('cfg_db');
 	// Zuerst wird mit einem SELECT sichergestellt, dass der Datensatz existiert, denn das
 	// UPDATE-Statement liefert auch TRUE zurück, wenn die Entry-ID nicht vorhanden ist
@@ -133,7 +133,7 @@
 	if ($entry = $result->fetchArray()) {
 	  $title = SQLite3::escapeString($title);
 	  $content = SQLite3::escapeString($content);
-	  $sql = "UPDATE entry set title='$title', content='$content' WHERE eid=$eid";
+	  $sql = "UPDATE entry set title='$title', content='$content',datetime=$datum WHERE eid=$eid";
 	  return $db->exec($sql);
 	} return false;
   }

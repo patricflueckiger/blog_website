@@ -8,7 +8,7 @@ $content = $entry['content'];
 if(isset($_POST['inputContent'])&&isset($_POST['inputTitel'])){
   $title = $_POST['inputTitel'];
   $content = $_POST['inputContent'];
-  updateEntry($eid, $title, $content);
+  updateEntry($eid, $title, $content,time());
 }
 
 ?>
