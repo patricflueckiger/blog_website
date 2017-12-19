@@ -15,7 +15,7 @@ addEntry($blogId, $title, $content);
 }
 ?>
 
-<form action="<?php echo $_SERVER['PHP_SELF']."?function=blog_new"; ?>" method="post">
+<form action="<?php echo $_SERVER['PHP_SELF']."?function=blog_new&bid=$blogId"; ?>" method="post">
 
   <div class="form-group" style="margin-top: 4em; width: 50%">
     <label for="inputTitel">Titel:</label>
