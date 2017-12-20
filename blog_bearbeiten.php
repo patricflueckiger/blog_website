@@ -5,10 +5,18 @@ $blogId = $_GET['bid'];
 $entry = getEntry($eid);
 $title = $entry['title'];
 $content = $entry['content'];
+
+
 if(isset($_POST['inputContent'])&&isset($_POST['inputTitel'])){
-  $title = $_POST['inputTitel'];
-  $content = $_POST['inputContent'];
-  updateEntry($eid, $title, $content,time());
+    $title = $_POST['inputTitel'];
+    $content = $_POST['inputContent'];
+    updateEntry($eid, $title, $content,time());
+
+}
+
+if(isset($_POST['deleteEntry'])){
+  deleteEntry($eid);
+  header('Location:index.php?function=meine_blogs&bid='.$blogId);
 }
 
 ?>
@@ -27,7 +35,9 @@ if(isset($_POST['inputContent'])&&isset($_POST['inputTitel'])){
   </div>
       <br></br>
 <input id="updateButton" class="btn btn-primary mt-2"  type="submit" value="Änderungen Speichern"></input>
-<a class="btn btn-primary mt-2"  role="button">Beitrag Löschen</a>
+<label for"deleteEntry">
+<input id="deleteEntry" name="deleteEntry" class="btn btn-primary mt-2"  type="submit" value="Beitrag löschen"></input>
+</label>
 <a class="btn btn-primary mt-2"  role="button">Änderungen verwerfen</a>
 </form>
 
