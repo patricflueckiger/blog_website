@@ -2,6 +2,7 @@
 $title = "";
 $content  ="";
 $entry = null;
+$blogId = $_SESSION['uid'];
 
 if (isset($_POST["inputTitel"])) {
   $title = $_POST["inputTitel"];
