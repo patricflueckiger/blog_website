@@ -2,9 +2,7 @@
 
 $eid = $_GET['eid'];
 $blogId = $_GET['bid'];
-$entry = getEntry($eid);
-$title = htmlspecialchars($entry['title']);
-$content =  htmlspecialchars($entry['content']);
+
 
 
 if(isset($_POST['inputContent'])&&isset($_POST['inputTitel'])){
@@ -12,6 +10,11 @@ if(isset($_POST['inputContent'])&&isset($_POST['inputTitel'])){
     $content = $_POST['inputContent'];
     updateEntry($eid, $title, $content,time());
 
+}
+else {
+  $entry = getEntry($eid);
+  $title = htmlspecialchars($entry['title']);
+  $content =  htmlspecialchars($entry['content']);
 }
 
 if(isset($_POST['deleteEntry'])){

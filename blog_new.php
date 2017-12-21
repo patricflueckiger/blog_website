@@ -12,7 +12,7 @@ if (isset($_POST["inputContent"])) {
   $content = $_POST["inputContent"];
 }
 if (strlen($title)>1) {
-addEntry($blogId, $title, $content);
+addEntry(htmlspecialchars($blogId),htmlspecialchars($title), htmlspecialchars($content));
 }
 ?>
 
