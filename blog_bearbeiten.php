@@ -3,8 +3,8 @@
 $eid = $_GET['eid'];
 $blogId = $_GET['bid'];
 $entry = getEntry($eid);
-$title = $entry['title'];
-$content = $entry['content'];
+$title = htmlspecialchars($entry['title']);
+$content =  htmlspecialchars($entry['content']);
 
 
 if(isset($_POST['inputContent'])&&isset($_POST['inputTitel'])){
@@ -29,6 +29,7 @@ if(isset($_POST['deleteEntry'])){
     <textarea rows="1" type="text" name="inputTitel" id="inputTitel" placeholder="Titel" class="form-control"><?php echo $title?></textarea>
   </div>
   <div  style="margin-top: 4em;  width: 100%">
+
     <label for="inputContent">Text:</label>
     <br></br>
     <textarea rows="35" cols="120" type="text" name="inputContent" id="inputContent" placeholder="Content"><?php echo $content?></textarea>
@@ -38,7 +39,7 @@ if(isset($_POST['deleteEntry'])){
 <label for"deleteEntry">
 <input id="deleteEntry" name="deleteEntry" class="btn btn-primary mt-2"  type="submit" value="Beitrag löschen"></input>
 </label>
-<a class="btn btn-primary mt-2"  role="button">Änderungen verwerfen</a>
+<a class="btn btn-primary mt-2" href="index.php?function=meine_blogs&bid=<?php echo $blogId ?>" role="button">Änderungen verwerfen</a>
 </form>
 
 <?php
